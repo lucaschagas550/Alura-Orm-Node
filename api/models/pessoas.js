@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       });
       Pessoas.hasMany(models.Matriculas, {
         foreignKey: "estudante_id",
+        scope: { status: "confirmado" }, // Por esse campo sera sera filtrado por onde tem status confirmado, se for chamado o scopo
+        as: "aulasMatriculadas", //Alias para o nome do scope, para ser chamado no controller por exemplo
       });
     }
   }
